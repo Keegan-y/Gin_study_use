@@ -1,0 +1,34 @@
+
+
+[31m2020/10/11 16:37:10 [Recovery] 2020/10/11 - 16:37:10 panic recovered:
+GET /test HTTP/1.1
+Host: 127.0.0.1:8080
+Accept: */*
+User-Agent: curl/7.61.1
+
+
+test panic===模拟服务器挂掉了===
+C:/GOPATH/src/github.com/Keegen-y/gin_test_project/middleware_gin/main.go:17 (0x94eca7)
+	main.func1: panic("test panic===模拟服务器挂掉了===")
+C:/GOPATH/pkg/mod/github.com/gin-gonic/gin@v1.4.0/context.go:124 (0x939771)
+	(*Context).Next: c.handlers[c.index](c)
+C:/GOPATH/pkg/mod/github.com/gin-gonic/gin@v1.4.0/recovery.go:83 (0x94cc9a)
+	RecoveryWithWriter.func1: c.Next()
+C:/GOPATH/pkg/mod/github.com/gin-gonic/gin@v1.4.0/context.go:124 (0x939771)
+	(*Context).Next: c.handlers[c.index](c)
+C:/GOPATH/pkg/mod/github.com/gin-gonic/gin@v1.4.0/logger.go:240 (0x94bd27)
+	LoggerWithConfig.func1: c.Next()
+C:/GOPATH/pkg/mod/github.com/gin-gonic/gin@v1.4.0/context.go:124 (0x939771)
+	(*Context).Next: c.handlers[c.index](c)
+C:/GOPATH/pkg/mod/github.com/gin-gonic/gin@v1.4.0/gin.go:389 (0x943168)
+	(*Engine).handleHTTPRequest: c.Next()
+C:/GOPATH/pkg/mod/github.com/gin-gonic/gin@v1.4.0/gin.go:351 (0x94298a)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+C:/Go/src/net/http/server.go:2802 (0x6bec6a)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+C:/Go/src/net/http/server.go:1890 (0x6ba43b)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+C:/Go/src/runtime/asm_amd64.s:1357 (0x45c0f0)
+	goexit: BYTE	$0x90	// NOP
+[0m
+[GIN] 2020/10/11 - 16:37:10 | 500 |      17.991ms |       127.0.0.1 | GET      /test
